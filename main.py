@@ -54,11 +54,21 @@ def signup():
   except Exception as e:
       print(f"❌ Signup failed: {str(e)}")
 
+# RealTime Database
+def add_data_to_db():
+    try:
+        data = {"name": "Techno International New Town","registered": True}
+        db.child("registered colleges").push(data)
+        print("✅ Data added to database!")
+    except Exception as e:
+        print(f"❌ Failed to add data to database: {str(e)}")
+
 # Main function
 if __name__ == "__main__":
     ch = input("Do you want to (l)ogin or (s)ignup? ").lower()
     if ch == 'l':
         login()
+        add_data_to_db()
     elif ch == 's':
         signup()
     else:
